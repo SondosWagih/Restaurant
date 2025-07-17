@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مطعمنا اللذيذ | قائمة الطعام</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gray-50" x-data="{ mobileMenuOpen: false }">
+    <!-- Header -->
+    <header class="bg-amber-800 text-white sticky top-0 z-50 shadow-lg">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold flex items-center" aria-label="العودة للصفحة الرئيسية">
+                <i class="fas fa-utensils ml-2"></i>
+                <span>مطعمنا اللذيذ</span>
+            </a>
+            
+            <!-- Desktop Navigation -->
+            <nav class="hidden md:flex space-x-6 space-x-reverse">
+                <a href="#" class="hover:text-amber-200" aria-label="الرئيسية">الرئيسية</a>
+                <a href="#menu" class="hover:text-amber-200" aria-label="قائمة الطعام">قائمة الطعام</a>
+                <a href="#about" class="hover:text-amber-200" aria-label="عن المطعم">عن المطعم</a>
+                <a href="#contact" class="hover:text-amber-200" aria-label="اتصل بنا">اتصل بنا</a>
+            </nav>
+                       
+            <!-- Mobile Menu Button -->
+            <button @click="mobileMenuOpen = !mobileMenuOpen" class="md:hidden p-2" aria-label="فتح قائمة الجوال">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div x-show="mobileMenuOpen" @click.away="mobileMenuOpen = false" 
+             x-transition:enter="animate__animated animate__fadeInDown"
+             x-transition:leave="animate__animated animate__fadeOutUp"
+             class="md:hidden bg-amber-700 px-4 py-2">
+            <a href="#" class="block py-2 hover:bg-amber-600 px-2 rounded" @click="mobileMenuOpen = false">الرئيسية</a>
+            <a href="#menu" class="block py-2 hover:bg-amber-600 px-2 rounded" @click="mobileMenuOpen = false">قائمة الطعام</a>
+            <a href="#about" class="block py-2 hover:bg-amber-600 px-2 rounded" @click="mobileMenuOpen = false">عن المطعم</a>
+            <a href="#contact" class="block py-2 hover:bg-amber-600 px-2 rounded" @click="mobileMenuOpen = false">اتصل بنا</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="bg-amber-600 text-white py-16">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-8 md:mb-0 animate__animated animate__fadeInRight">
+                <h1 class="text-4xl md:text-5xl font-bold mb-4">أطيب المأكولات الشرقية</h1>
+                <p class="text-xl mb-6">جرب ألذ الأطباق المعدة بأيدي خبراء الطهي</p>
+                <a href="#menu" class="bg-white text-amber-800 px-6 py-3 rounded-lg font-bold hover:bg-amber-100 transition duration-300 inline-block" aria-label="تصفح قائمة الطعام">
+                    تصفح القائمة <i class="fas fa-arrow-left ml-2"></i>
+                </a>
+            </div>
+            <div class="md:w-1/2 animate__animated animate__fadeInLeft">
+                <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                     alt="صورة داخل مطعم فاخر" class="rounded-lg shadow-2xl w-full h-auto max-h-96 object-cover">
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-amber-800" data-aos="fade-down">قائمة الطعام</h2>
+            
+            <!-- Menu Categories Navigation -->
+            <div class="flex overflow-x-auto pb-4 mb-8 hide-scrollbar" data-aos="fade-up">
+                <div class="flex space-x-4 space-x-reverse mx-auto">
+                    <a href="#appetizers" class="menu-nav-item bg-amber-100 text-amber-800 px-6 py-2 rounded-full whitespace-nowrap hover:bg-amber-200 transition">المقبلات</a>
+                    <a href="#main-dishes" class="menu-nav-item bg-amber-100 text-amber-800 px-6 py-2 rounded-full whitespace-nowrap hover:bg-amber-200 transition">الأطباق الرئيسية</a>
+                    <a href="#grills" class="menu-nav-item bg-amber-100 text-amber-800 px-6 py-2 rounded-full whitespace-nowrap hover:bg-amber-200 transition">المشويات</a>
+                    <a href="#desserts" class="menu-nav-item bg-amber-100 text-amber-800 px-6 py-2 rounded-full whitespace-nowrap hover:bg-amber-200 transition">الحلويات</a>
+                    <a href="#drinks" class="menu-nav-item bg-amber-100 text-amber-800 px-6 py-2 rounded-full whitespace-nowrap hover:bg-amber-200 transition">المشروبات</a>
+                </div>
+            </div>
+            
+            <!-- Appetizers -->
+            <div id="appetizers" class="menu-category mb-16" data-aos="fade-up">
+                <h3 class="text-2xl font-bold mb-6 text-amber-700 border-b-2 border-amber-200 pb-2">المقبلات</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Item 1 -->
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition duration-300">
+                        <img src="https://arabtabkh.com/wp-content/uploads/2023/04/%D8%B3%D9%84%D8%B7%D8%A9-%D9%8A%D9%88%D9%86%D8%A7%D9%86%D9%8A%D8%A9.jpg" 
+                             alt="سلطة يونانية طازجة" class="w-full h-48 object-cover">
+                        <div class="p-4">
+                            <div class="flex justify-between items-start">
+                                <h4 class="text-xl font-bold text-gray-800">سلطة يونانية</h4>
+                                <span class="bg-amber-100 text-amber-800 px-2 py-1 rounded text-sm">25 ر.س</span>
+                            </div>
+                            <p class="text-gray-600 mt-2">خضار طازجة مع جبنة فيتا وزيتون أسود</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Item 2 -->
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition duration-300">
+                        <img src="https://ik.imagekit.io/wez2loho68v/prod/recipes/appetizers/easy-labneh-with-olives.gif" 
+                             alt="حمسة لبنية مع زيت الزيتون" class="w-full h-48 object-cover">
+                        <div class="p-4">
+                            <div class="flex justify-between items-start">
+                                <h4 class="text-xl font-bold text-gray-800">حمسة لبنية</h4>
+                                <span class="bg-amber-100 text-amber-800 px-2 py-1 rounded text-sm">18 ر.س</span>
+                            </div>
+                            <p class="text-gray-600 mt-2">حمسة لبنية غنية بزيت الزيتون والبهارات الخاصة</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Item 3 -->
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition duration-300">
+                        <img src="https://kitchen.juneidi.com/wp-content/uploads/2023/09/%D8%B7%D8%B1%D9%8A%D9%82%D8%A9-%D8%B9%D9%85%D9%84-%D9%85%D8%AA%D8%A8%D9%84-%D8%A7%D9%84%D8%A8%D8%A7%D8%B0%D9%86%D8%AC%D8%A7%D9%86.webp" 
+                             alt="متبل باذنجان شهي" class="w-full h-48 object-cover">
+                        <div class="p-4">
+                            <div class="flex justify-between items-start">
+                                <h4 class="text-xl font-bold text-gray-800">متبل باذنجان</h4>
+                                <span class="bg-amber-100 text-amber-800 px-2 py-1 rounded text-sm">20 ر.س</span>
+                            </div>
+                            <p class="text-gray-600 mt-2">باذنجان مشوي ومهروس مع الطحينة والثوم وعصير الليمون</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Main Dishes -->
+            <div id="main-dishes" class="menu-category mb-16" data-aos="fade-up">
+                <h3 class="text-2xl font-bold mb-6 text-amber-700 border-b-2 border-amber-200 pb-2">الأطباق الرئيسية</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Item 1 -->
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition duration-300">
+                        <img src="https://images.unsplash.com/photo-1544025162-d76694265947?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80" 
+                             alt="طبق منسف أردني تقليدي" class="w-full h-48 object-cover">
+                        <div class="p-4">
+                            <div class="flex justify-between items-start">
+                                <h4 class="text-xl font-bold text-gray-800">منسف</h4>
+                                <span class="bg-amber-100 text-amber-800 px-2 py-1 rounded text-sm">55 ر.س</span>
+                            </div>
+                            <p class="text-gray-600 mt-2">لحم ضأن بلدي مطبوخ بالجميد مع أرز وخبز شرقي</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Item 2 -->
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition duration-300">
+                        <img src="https://images.unsplash.com/photo-1611270632120-8a7a38fe4702?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" 
+                             alt="طبق كبسة دجاج شهي" class="w-full h-48 object-cover">
+                        <div class="p-4">
+                            <div class="flex justify-between items-start">
+                                <h4 class="text-xl font-bold text-gray-800">كبسة دجاج</h4>
+                                <span class="bg-amber-100 text-amber-800 px-2 py-1 rounded text-sm">45 ر.س</span>
+                            </div>
+                            <p class="text-gray-600 mt-2">أرز بخاري مع دجاج متبل ومكسرات وزبيب</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Item 3 -->
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition duration-300">
+                        <img src="https://images.unsplash.com/photo-1601050690820-4b6871e8ac35?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                             alt="طبق مقلوبة بالدجاج والخضار" class="w-full h-48 object-cover">
+                        <div class="p-4">
+                            <div class="flex justify-between items-start">
+                                <h4 class="text-xl font-bold text-gray-800">مقلوبة</h4>
+                                <span class="bg-amber-100 text-amber-800 px-2 py-1 rounded text-sm">50 ر.س</span>
+                            </div>
+                            <p class="text-gray-600 mt-2">أرز مع خضار مشكلة ودجاج أو لحم، تقدم مقلوبة</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Grills -->
+            <div id="grills" class="menu-category mb-16" data-aos="fade-up">
+                <h3 class="text-2xl font-bold mb-6 text-amber-700 border-b-2 border-amber-200 pb-2">المشويات</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Item 1 -->
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition duration-300">
+                        <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" 
+                             alt="أسياخ شيش طاووق مشوية" class="w-full h-48 object-cover">
+                        <div class="p-4">
+                            <div class="flex justify-between items-start">
+                                <h4 class="text-xl font-bold text-gray-800">شيش طاووق</h4>
+                                <span class="bg-amber-100 text-amber-800 px-2 py-1 rounded text-sm">40 ر.س</span>
+                            </div>
+                            <p class="text-gray-600 mt-2">قطع دجاج متبلة ومشوية على الفحم مع خضار</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Item 2 -->
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition duration-300">
+                        <img src="https://images.unsplash.com/photo-1603360946369-dc9bb6258143?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                             alt="كفتة مشوية على الفحم" class="w-full h-48 object-cover">
+                        <div class="p-4">
+                            <div class="flex justify-between items-start">
+                                <h4 class="text-xl font-bold text-gray-800">كفتة مشوية</h4>
+                                <span class="bg-amber-100 text-amber-800 px-2 py-1 rounded text-sm">45 ر.س</span>
+                            </div>
+                            <p class="text-gray-600 mt-2">لحم مفروم متبل ببهارات خاصة ومشوي على الفحم</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Item 3 -->
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition duration-300">
+                        <img src="https://images.unsplash.com/photo-1601050690122-d0f0c9f39d46?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" 
+                             alt="طبق مشاوي مشكلة متنوع" class="w-full h-48 object-cover">
+                        <div class="p-4">
+                            <div class="flex justify-between items-start">
+                                <h4 class="text-xl font-bold text-gray-800">مشاوي مشكلة</h4>
+                                <span class="bg-amber-100 text-amber-800 px-2 py-1 rounded text-sm">60 ر.س</span>
+                            </div>
+                            <p class="text-gray-600 mt-2">تشكيلة من شيش الطاووق، الكفتة، وقطع اللحم المشوية</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Desserts -->
+            <div id="desserts" class="menu-category mb-16" data-aos="fade-up">
+                <h3 class="text-2xl font-bold mb-6 text-amber-700 border-b-2 border-amber-200 pb-2">الحلويات</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Item 1 -->
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition duration-300">
+                        <img src="https://images.unsplash.com/photo-1587314168485-32f273393f0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                             alt="كنافة بالجبنة والقشطة" class="w-full h-48 object-cover">
+                        <div class="p-4">
+                            <div class="flex justify-between items-start">
+                                <h4 class="text-xl font-bold text-gray-800">كنافة نابلسية</h4>
+                                <span class="bg-amber-100 text-amber-800 px-2 py-1 rounded text-sm">30 ر.س</span>
+                            </div>
+                            <p class="text-gray-600 mt-2">كنافة بالجبنة والقشطة، تقدم ساخنة مع القطر</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Item 2 -->
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition duration-300">
+                        <img src="https://images.unsplash.com/photo-1587314168485-32f273393f0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                             alt="أم علي بالكريمة والمكسرات" class="w-full h-48 object-cover">
+                        <div class="p-4">
+                            <div class="flex justify-between items-start">
+                                <h4 class="text-xl font-bold text-gray-800">أم علي</h4>
+                                <span class="bg-amber-100 text-amber-800 px-2 py-1 rounded text-sm">22 ر.س</span>
+                            </div>
+                            <p class="text-gray-600 mt-2">حلوى مصرية تقليدية بالخبز والحليب والمكسرات</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Item 3 -->
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition duration-300">
+                        <img src="https://images.unsplash.com/photo-1587314168485-32f273393f0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                             alt="بقلاوة مشكلة بالفستق" class="w-full h-48 object-cover">
+                        <div class="p-4">
+                            <div class="flex justify-between items-start">
+                                <h4 class="text-xl font-bold text-gray-800">بقلاوة مشكلة</h4>
+                                <span class="bg-amber-100 text-amber-800 px-2 py-1 rounded text-sm">28 ر.س</span>
+                            </div>
+                            <p class="text-gray-600 mt-2">تشكيلة من البقلاوة الفاخرة بالفستق والجوز</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Drinks -->
+            <div id="drinks" class="menu-category mb-16" data-aos="fade-up">
+                <h3 class="text-2xl font-bold mb-6 text-amber-700 border-b-2 border-amber-200 pb-2">المشروبات</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Item 1 -->
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition duration-300">
+                        <img src="https://images.unsplash.com/photo-1561758033-d8939341868a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                             alt="عصير برتقال طازج" class="w-full h-48 object-cover">
+                        <div class="p-4">
+                            <div class="flex justify-between items-start">
+                                <h4 class="text-xl font-bold text-gray-800">عصير برتقال طازج</h4>
+                                <span class="bg-amber-100 text-amber-800 px-2 py-1 rounded text-sm">15 ر.س</span>
+                            </div>
+                            <p class="text-gray-600 mt-2">عصير برتقال طبيعي 100%، منعش ولذيذ</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Item 2 -->
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition duration-300">
+                        <img src="https://images.unsplash.com/photo-1572490122746-7705113660e1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                             alt="شاي بالنعناع الساخن" class="w-full h-48 object-cover">
+                        <div class="p-4">
+                            <div class="flex justify-between items-start">
+                                <h4 class="text-xl font-bold text-gray-800">شاي بالنعناع</h4>
+                                <span class="bg-amber-100 text-amber-800 px-2 py-1 rounded text-sm">10 ر.س</span>
+                            </div>
+                            <p class="text-gray-600 mt-2">شاي أخضر بالنعناع الطازج، مثالي بعد الوجبات</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Item 3 -->
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition duration-300">
+                        <img src="https://images.unsplash.com/photo-1517959105421-87d6f217008f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                             alt="قهوة عربية أصيلة" class="w-full h-48 object-cover">
+                        <div class="p-4">
+                            <div class="flex justify-between items-start">
+                                <h4 class="text-xl font-bold text-gray-800">قهوة عربية</h4>
+                                <span class="bg-amber-100 text-amber-800 px-2 py-1 rounded text-sm">12 ر.س</span>
+                            </div>
+                            <p class="text-gray-600 mt-2">قهوة عربية أصيلة ببهاراتها الخاصة</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Special Offers Slider -->
+            <div class="mb-16" data-aos="fade-up">
+                <h3 class="text-2xl font-bold mb-6 text-amber-700 border-b-2 border-amber-200 pb-2">عروض خاصة</h3>
+                <div class="swiper-container special-offers-slider" data-swiper-slides="2">
+                    <div class="swiper-wrapper">
+                        <!-- Slide 1 -->
+                        <div class="swiper-slide bg-amber-100 rounded-lg p-6 flex flex-col md:flex-row items-center">
+                            <img src="https://images.unsplash.com/photo-1601050690981-3fb36d8251c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1473&q=80" 
+                                 alt="صورة لعرض عائلي للمنسف" class="w-full md:w-1/2 h-64 object-cover rounded-lg mb-4 md:mb-0 md:ml-6">
+                            <div class="w-full md:w-1/2 text-right md:text-right">
+                                <h4 class="text-2xl font-bold text-amber-800 mb-2">عرض العائلة</h4>
+                                <p class="text-gray-700 mb-4">منسف كبير + سلطة + مشروبين + حلويات بسعر 120 ر.س فقط بدلاً من 150 ر.س</p>
+                                <span class="bg-amber-500 text-white px-3 py-1 rounded-full text-sm font-semibold">وفر 30 ر.س!</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Slide 2 -->
+                        <div class="swiper-slide bg-amber-100 rounded-lg p-6 flex flex-col md:flex-row items-center">
+                            <img src="https://images.unsplash.com/photo-1601050690643-9bce71d8d53e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                                 alt="صورة لعرض غداء كبسة دجاج" class="w-full md:w-1/2 h-64 object-cover rounded-lg mb-4 md:mb-0 md:ml-6">
+                            <div class="w-full md:w-1/2 text-right md:text-right">
+                                <h4 class="text-2xl font-bold text-amber-800 mb-2">عرض الغداء</h4>
+                                <p class="text-gray-700 mb-4">كبسة دجاج + مقبلات + مشروب بسعر 60 ر.س فقط من الساعة 12 ظهراً حتى 4 عصراً</p>
+                                <span class="bg-amber-500 text-white px-3 py-1 rounded-full text-sm font-semibold">عرض يومي!</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 bg-amber-50">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-8 md:mb-0 md:order-2" data-aos="fade-left">
+                    <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" 
+                         alt="صورة داخلية لمطعمنا" class="rounded-lg shadow-xl w-full h-auto max-h-96 object-cover">
+                </div>
+                <div class="md:w-1/2 md:pr-8 md:order-1" data-aos="fade-right">
+                    <h2 class="text-3xl font-bold mb-6 text-amber-800">عن مطعمنا</h2>
+                    <p class="text-gray-700 mb-4 text-lg">
+                        مطعمنا اللذيذ تأسس عام 2005 بهدف تقديم أطيب المأكولات الشرقية الأصيلة بأجود المكونات وأفضل طرق الطهي.
+                    </p>
+                    <p class="text-gray-700 mb-4 text-lg">
+                        نحرص على استخدام مكونات طازجة يومياً وتقديم تجربة طعام لا تنسى لزبائننا الكرام.
+                    </p>
+                    <p class="text-gray-700 mb-6 text-lg">
+                        فريقنا من الطهاة المحترفين يعمل بكل حب وإتقان لتقديم ألذ الأطباق التي تتناسب مع جميع الأذواق.
+                    </p>
+                    <div class="flex space-x-4 space-x-reverse">
+                        <div class="bg-white p-4 rounded-lg shadow-md text-center flex-1">
+                            <i class="fas fa-utensils text-3xl text-amber-600 mb-2"></i>
+                            <h4 class="font-bold text-gray-800">+100 طبق</h4>
+                            <p class="text-gray-600 text-sm">خيارات متنوعة</p>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg shadow-md text-center flex-1">
+                            <i class="fas fa-award text-3xl text-amber-600 mb-2"></i>
+                            <h4 class="font-bold text-gray-800">15 عاماً</h4>
+                            <p class="text-gray-600 text-sm">خبرة في الطهي</p>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg shadow-md text-center flex-1">
+                            <i class="fas fa-users text-3xl text-amber-600 mb-2"></i>
+                            <h4 class="font-bold text-gray-800">+10,000</h4>
+                            <p class="text-gray-600 text-sm">زبون راضٍ</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-amber-800" data-aos="fade-down">آراء الزبائن</h2>
+            
+            <div class="swiper-container testimonials-slider">
+                <div class="swiper-wrapper">
+                    <!-- Testimonial 1 -->
+                    <div class="swiper-slide">
+                        <div class="bg-amber-50 p-6 rounded-lg shadow-md">
+                            <div class="flex items-center mb-4">
+                                <img src="https://randomuser.me/api/portraits/men/11.jpg" alt="صورة عميل عماد عبدالله" class="w-12 h-12 rounded-full ml-4">
+                                <div>
+                                    <h4 class="font-bold text-gray-800">عماد عبدالله</h4>
+                                    <div class="flex text-amber-400">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="text-gray-700">
+                                "أجمل مطعم ذقت فيه المنسف الأصيل، النظافة ممتازة والخدمة سريعة، أنصح الجميع بتجربته."
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- Testimonial 2 -->
+                    <div class="swiper-slide">
+                        <div class="bg-amber-50 p-6 rounded-lg shadow-md">
+                            <div class="flex items-center mb-4">
+                                <img src="https://randomuser.me/api/portraits/women/54.jpg" alt="صورة عميلة سارة محمد" class="w-12 h-12 rounded-full ml-4">
+                                <div>
+                                    <h4 class="font-bold text-gray-800">سارة محمد</h4>
+                                    <div class="flex text-amber-400">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star-half-alt"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="text-gray-700">
+                                "المكان جميل جداً والأكل لذيذ، خاصة الحلويات الشرقية، الأسعار مناسبة والموظفون لطفاء."
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- Testimonial 3 -->
+                    <div class="swiper-slide">
+                        <div class="bg-amber-50 p-6 rounded-lg shadow-md">
+                            <div class="flex items-center mb-4">
+                                <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="صورة عميل خالد أحمد" class="w-12 h-12 rounded-full ml-4">
+                                <div>
+                                    <h4 class="font-bold text-gray-800">خالد أحمد</h4>
+                                    <div class="flex text-amber-400">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="text-gray-700">
+                                "أفضل مشويات في المدينة، اللحم طري جداً والطعم رائع، جربت العرض العائلي وكان ممتازاً."
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            <div class="swiper-pagination"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 bg-amber-800 text-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12" data-aos="fade-down">اتصل بنا</h2>
+            
+            <div class="flex flex-col md:flex-row">
+                <div class="md:w-1/2 mb-8 md:mb-0" data-aos="fade-right">
+                    <h3 class="text-2xl font-bold mb-4">معلومات التواصل</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 ml-3 text-amber-300"></i>
+                            <div>
+                                <h4 class="font-bold">العنوان</h4>
+                                <p>شارع الملك فهد، حي العليا، الرياض، المملكة العربية السعودية</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <i class="fas fa-phone-alt mt-1 ml-3 text-amber-300"></i>
+                            <div>
+                                <h4 class="font-bold">الهاتف</h4>
+                                <p>+966 50 123 4567</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <i class="fas fa-envelope mt-1 ml-3 text-amber-300"></i>
+                            <div>
+                                <h4 class="font-bold">البريد الإلكتروني</h4>
+                                <p>info@matamna.com</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <i class="fas fa-clock mt-1 ml-3 text-amber-300"></i>
+                            <div>
+                                <h4 class="font-bold">ساعات العمل</h4>
+                                <p>يومياً من 12 ظهراً حتى 12 منتصف الليل</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h3 class="text-2xl font-bold mt-8 mb-4">تابعنا على</h3>
+                    <div class="flex space-x-4 space-x-reverse">
+                        <a href="#" class="bg-amber-700 hover:bg-amber-600 w-10 h-10 rounded-full flex items-center justify-center" aria-label="فيسبوك">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="bg-amber-700 hover:bg-amber-600 w-10 h-10 rounded-full flex items-center justify-center" aria-label="تويتر">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="bg-amber-700 hover:bg-amber-600 w-10 h-10 rounded-full flex items-center justify-center" aria-label="انستغرام">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="bg-amber-700 hover:bg-amber-600 w-10 h-10 rounded-full flex items-center justify-center" aria-label="سناب شات">
+                            <i class="fab fa-snapchat-ghost"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="md:w-1/2 md:pl-8" data-aos="fade-left">
+                <h3 class="text-2xl font-bold mb-4">أرسل لنا رسالة</h3>
+                <form action="https://formsubmit.co/sonplaysgaming114@gmail.com" method="POST" class="space-y-4">
+                    <input type="hidden" name="_subject" value="رسالة جديدة من موقع المطعم!">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_template" value="box">
+                    <input type="hidden" name="_next" value="https://yourwebsite.com/thanks.html">
+
+                    <div>
+                        <label for="name" class="block mb-1">الاسم</label>
+                        <input type="text" id="name" class="w-full px-4 py-2 rounded bg-amber-700 border border-amber-600 focus:outline-none focus:ring-2 focus:ring-amber-400 text-white placeholder-amber-300" placeholder="اسمك الكامل" required>
+                    </div>
+                    <div>
+                        <label for="email" class="block mb-1">البريد الإلكتروني</label>
+                        <input type="email" id="email" class="w-full px-4 py-2 rounded bg-amber-700 border border-amber-600 focus:outline-none focus:ring-2 focus:ring-amber-400 text-white placeholder-amber-300" placeholder="بريدك الإلكتروني" required>
+                    </div>
+                    <div>
+                        <label for="message" class="block mb-1">الرسالة</label>
+                        <textarea id="message" rows="4" class="w-full px-4 py-2 rounded bg-amber-700 border border-amber-600 focus:outline-none focus:ring-2 focus:ring-amber-400 text-white placeholder-amber-300" placeholder="اكتب رسالتك هنا..." required></textarea>
+                    </div>
+                    <button type="submit" class="bg-white text-amber-800 px-6 py-2 rounded font-bold hover:bg-amber-100 transition">
+                        إرسال <i class="fas fa-paper-plane ml-2"></i>
+                    </button>
+                </form>
+            </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <a href="#" class="text-2xl font-bold flex items-center" aria-label="العودة للصفحة الرئيسية">
+                        <i class="fas fa-utensils ml-2 text-amber-500"></i>
+                        <span>مطعمنا اللذيذ</span>
+                    </a>
+                    <p class="text-gray-400 mt-2">أطيب المأكولات الشرقية منذ 2005</p>
+                </div>
+                <div class="flex space-x-6 space-x-reverse">
+                    <a href="legal.html?section=terms" class="hover:text-amber-400">الشروط والأحكام</a>
+                    <a href="legal.html?section=privacy" class="hover:text-amber-400">سياسة الخصوصية</a>
+                    <a href="legal.html?section=faq" class="hover:text-amber-400">الأسئلة الشائعة</a>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>جميع الحقوق محفوظة &copy; 2025 مطعمنا اللذيذ</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="fixed bottom-6 left-6 bg-amber-600 text-white p-3 rounded-full shadow-lg opacity-0 invisible transition-all duration-300" aria-label="العودة لأعلى الصفحة">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- JavaScript Libraries -->
+    <!-- Alpine JS -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <!-- GSAP (Not used in provided JS, but kept if needed for future animations) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    <!-- AOS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- SweetAlert2 (Not used in provided JS, but kept if needed for future alerts) -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="script.js"></script>
+    
+</body>
+</html>
