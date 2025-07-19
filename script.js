@@ -158,26 +158,3 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-function sendWhatsApp(e) {
-    e.preventDefault(); // يمنع إرسال الفورم التقليدي
-
-    const name = document.getElementById("name").value.trim();
-    const email = document.getElementById("email").value.trim();
-    const message = document.getElementById("message").value.trim();
-
-    if (!name || !email || !message) {
-        alert("من فضلك املأ جميع الحقول.");
-        return;
-    }
-
-    const fullMessage = `👋 مرحبًا، لدي رسالة جديدة من عميل:
-    
-📌 الاسم: ${name}
-📧 البريد الإلكتروني: ${email}
-💬 الرسالة: ${message}`;
-
-    const phoneNumber = "201098869150"; // ← استبدلي الرقم برقم صاحب المطعم بدون "+" فقط كود الدولة 2 لمصر
-
-    const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(fullMessage)}`;
-    window.open(url, "_blank");
-}
