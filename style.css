@@ -1,0 +1,225 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Added for consistent box model */
+}
+
+/* Smooth Scroll Behavior for HTML */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Body Font and Overflow */
+body {
+    font-family: 'Cairo', sans-serif;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+    -webkit-overflow-scrolling: touch; /* Improve scroll on iOS */
+}
+
+textarea {
+  resize: none;
+}
+
+
+html, body {
+  overflow-x: hidden;
+}
+
+.navbar {
+  transition: all 0.3s ease;
+}
+.navbar.scrolled {
+  background-color: var(--dark-color) !important;
+  padding: 10px 0;
+}
+
+.hero {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../images/hero-bg.jpg') center/cover no-repeat;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  color: white;
+}
+
+.menu-item {
+  margin-bottom: 30px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.menu-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+.menu-img {
+  height: 200px;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+.menu-item:hover .menu-img {
+  transform: scale(1.05);
+}
+
+.review {
+  display: none;
+  text-align: center;
+  padding: 20px;
+}
+
+.review.active {
+  display: block;
+}
+
+footer {
+  background-color: var(--dark-color);
+  color: white;
+  padding: 40px 0;
+}
+
+/* Menu Category Scroll Margin */
+.menu-category {
+    scroll-margin-top: 100px; /* Offset for sticky header when navigating to sections */
+}
+
+/* Hide Scrollbar for Menu Categories Navigation */
+.hide-scrollbar {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+}
+
+/* Back to Top Button Styling */
+#backToTop {
+  position: fixed;    /* Fixed position on screen */
+  z-index: 9999;      /* High z-index to stay on top */
+  /* Initial state handled by JS and Tailwind classes */
+}
+
+/* Swiper Container for Testimonials */
+.swiper-container {
+  width: 100%;
+  overflow: visible; /* Show overflow */
+  padding: 20px 0; /* Add padding */
+}
+
+/* Swiper Slide Styling */
+.swiper-slide {
+  /* box-sizing: border-box; - Already set in global reset */
+  padding: 1rem;     /* Consistent padding */
+  margin: 0;         /* Remove any side margins */
+}
+
+/* Swiper Pagination Styling */
+.swiper-pagination {
+    position: absolute !important;
+    bottom: 1px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    z-index: 10 !important;
+}
+
+.swiper-container {
+    position: relative;
+}
+
+.swiper-pagination-bullet {
+    background: #f59e0b !important; /* Amber color */
+    opacity: 0.5 !important;
+}
+
+.swiper-pagination-bullet-active {
+    background: #f59e0b !important; /* Amber color */
+    opacity: 1 !important;
+}
+
+/* RTL specific adjustments for Swiper (if needed, Swiper handles most RTL) */
+/* For the special offers slider, ensure image is on the right for RTL */
+.swiper-slide.bg-amber-100.rounded-lg.p-6.flex.flex-col.md\:flex-row.items-center img {
+    margin-right: 0; /* Reset default margin-right */
+    margin-left: 1.5rem; /* Add margin-left for RTL layout */
+}
+
+/* Adjust text alignment for special offers content in RTL */
+.swiper-slide .w-full.md\:w-1\/2.text-right.md\:text-right {
+    text-align: right;
+}
+
+/* Adjustments for Font Awesome icons in RTL */
+.fas.fa-utensils.ml-2 {
+    margin-left: 0.5rem; /* Adjust margin for RTL */
+    margin-right: 0;
+}
+
+.fas.fa-arrow-left.ml-2 {
+    margin-left: 0.5rem; /* Adjust margin for RTL */
+    margin-right: 0;
+}
+
+.fas.fa-paper-plane.ml-2 {
+    margin-left: 0.5rem; /* Adjust margin for RTL */
+    margin-right: 0;
+}
+
+/* Adjustments for contact icons in RTL */
+.flex.items-start .fas {
+    margin-left: 0.75rem; /* Adjust margin for RTL */
+    margin-right: 0;
+}
+
+/* Adjustments for testimonial images in RTL */
+.swiper-slide .flex.items-center img {
+    margin-left: 1rem; /* Adjust margin for RTL */
+    margin-right: 0;
+}
+
+/* Ensure space-x-reverse works as expected for RTL */
+.space-x-reverse > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-x-reverse: 1;
+}
+
+/* Active state for menu navigation items (optional, can be added with JS) */
+.menu-nav-item.active {
+    background-color: #d97706; /* Darker amber for active state */
+    color: #fff;
+}
+
+/* Form Styles */
+#contactForm input,
+#contactForm textarea {
+  transition: all 0.3s ease;
+}
+
+#contactForm input:focus,
+#contactForm textarea:focus {
+  border-color: #f59e0b;
+  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.2);
+}
+
+/* Button Loading State */
+button[disabled] {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Success/Error Messages */
+.swal2-popup {
+  font-family: 'Cairo', sans-serif;
+  direction: rtl;
+}
+
+.swal2-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  .hero {
+    height: 70vh;
+    text-align: center;
+  }
+}
