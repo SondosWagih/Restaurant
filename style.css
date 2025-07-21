@@ -25,58 +25,6 @@ html, body {
   overflow-x: hidden;
 }
 
-.navbar {
-  transition: all 0.3s ease;
-}
-.navbar.scrolled {
-  background-color: var(--dark-color) !important;
-  padding: 10px 0;
-}
-
-.hero {
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../images/hero-bg.jpg') center/cover no-repeat;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  color: white;
-}
-
-.menu-item {
-  margin-bottom: 30px;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-}
-
-.menu-item:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
-}
-
-.menu-img {
-  height: 200px;
-  object-fit: cover;
-  transition: transform 0.3s;
-}
-.menu-item:hover .menu-img {
-  transform: scale(1.05);
-}
-
-.review {
-  display: none;
-  text-align: center;
-  padding: 20px;
-}
-
-.review.active {
-  display: block;
-}
-
-footer {
-  background-color: var(--dark-color);
-  color: white;
-  padding: 40px 0;
-}
 
 /* Menu Category Scroll Margin */
 .menu-category {
@@ -215,11 +163,4 @@ button[disabled] {
 .swal2-title {
   font-size: 1.5rem;
   font-weight: bold;
-}
-
-@media (max-width: 768px) {
-  .hero {
-    height: 70vh;
-    text-align: center;
-  }
 }
